@@ -32,8 +32,6 @@ public class VeggieController {
     @PostMapping("/init")
     public ResponseEntity<String> initializeDatabase() {
         veggieService.initializeDatabase();
-        String url = restClientUrl + "/heroes/veggie";
-        veggieService.getAllVeggies().forEach(veggie -> restTemplate.postForEntity(url, veggie.getName(), String.class));
         return ResponseEntity.ok("Database initialized with 3 veggie items");
     }
 
